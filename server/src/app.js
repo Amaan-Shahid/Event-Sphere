@@ -7,6 +7,8 @@ const healthRoutes = require('./routes/healthRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const errorHandler = require('./middleware/errorHandler');
+const eventRoutes = require('./routes/eventRoutes');
+
 
 dotenv.config();
 
@@ -22,6 +24,7 @@ testConnection();
 app.use('/api', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/events', eventRoutes); 
 
 // 404 fallback
 app.use((req, res, next) => {

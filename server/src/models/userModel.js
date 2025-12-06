@@ -54,9 +54,27 @@ async function updateUserPassword(userId, newPasswordHash) {
   );
 }
 
+async function isUserCoreMemberOfSociety(userId, societyId) {
+  const [rows] = await pool.query(
+    `
+    SELECT m.membership_id
+    FROM society_memberships m
+    JOIN society_roles r ON m.role_id = r.role_id
+    WHERE m.user_id = ?
+      AND m.society_id = ?
+      AND m.is_active = 1
+      AND r.is_core = 1
+    LIMIT 1
+    `,
+    [userId, societyId]
+  );
+  return rows.length > 0;
+}
+
 module.exports = {
   findUserByEmail,
   findUserById,
   getUserSocietyMemberships,
   updateUserPassword,
+  isUserCoreMemberOfSociety,
 };
