@@ -12,6 +12,7 @@ const path = require('path');
 const registrationRoutes = require('./routes/registrationRoutes');
 const volunteerRoutes = require('./routes/volunteerRoutes');
 const teamRoutes = require('./routes/teamRoutes');
+const attendanceRoutes = require('./routes/attendanceRoutes');
 
 
 dotenv.config();
@@ -38,6 +39,7 @@ app.use('/api/events', eventRoutes);
 app.use('/api', registrationRoutes);
 app.use('/api', volunteerRoutes);
 app.use('/api', teamRoutes);
+app.use('/api', attendanceRoutes);
 
 // 404 fallback
 app.use((req, res, next) => {
