@@ -127,6 +127,22 @@ async function listVolunteersForUser(userId) {
   return rows;
 }
 
+// Check if a user is an approved volunteer for a specific event
+async function isUserApprovedVolunteerForEvent(eventId, userId) {
+  const [rows] = await pool.query(
+    `
+    SELECT volunteer_id
+    FROM volunteers
+    WHERE event_id = ?
+      AND user_id = ?
+      AND status = 'approved'
+    LIMIT 1
+    `,
+    [eventId, userId]
+  );
+  return rows.length > 0;
+}
+
 module.exports = {
   getVolunteerByEventAndUser,
   getVolunteerById,
@@ -135,4 +151,5 @@ module.exports = {
   cancelVolunteer,
   listVolunteersForEvent,
   listVolunteersForUser,
+  isUserApprovedVolunteerForEvent, 
 };
