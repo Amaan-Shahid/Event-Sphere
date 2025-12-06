@@ -29,10 +29,10 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO users (name, email, password_hash, role, is_active)
 VALUES
-  ('Super Admin', 'admin@university.edu', 'dummy_hash_admin', 'super_admin', 1),
-  ('Ali Student', 'ali@university.edu', 'dummy_hash_ali', 'student', 1),
-  ('Sara Student', 'sara@university.edu', 'dummy_hash_sara', 'student', 1),
-  ('Hamza Student', 'hamza@university.edu', 'dummy_hash_hamza', 'student', 1);
+  ('Super Admin', 'admin@university.edu', '$2b$10$aXq28AN6r6KkQV0y8vmApe.pdKfhFiwalqX1MBbEtWavOHjnrKAXy', 'super_admin', 1),
+  ('Ali Student', 'ali@university.edu', '$2b$10$aXq28AN6r6KkQV0y8vmApe.pdKfhFiwalqX1MBbEtWavOHjnrKAXy', 'student', 1),
+  ('Sara Student', 'sara@university.edu', '$2b$10$aXq28AN6r6KkQV0y8vmApe.pdKfhFiwalqX1MBbEtWavOHjnrKAXy', 'student', 1),
+  ('Hamza Student', 'hamza@university.edu', '$2b$10$aXq28AN6r6KkQV0y8vmApe.pdKfhFiwalqX1MBbEtWavOHjnrKAXy', 'student', 1);
 
 -- After this:
 -- user_id=1 → Super Admin
