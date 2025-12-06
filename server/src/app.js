@@ -10,6 +10,8 @@ const errorHandler = require('./middleware/errorHandler');
 const eventRoutes = require('./routes/eventRoutes');
 const path = require('path');
 const registrationRoutes = require('./routes/registrationRoutes');
+const volunteerRoutes = require('./routes/volunteerRoutes');
+
 
 
 
@@ -35,6 +37,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/events', eventRoutes); 
 app.use('/api', registrationRoutes);
+app.use('/api', volunteerRoutes);
 
 // 404 fallback
 app.use((req, res, next) => {
