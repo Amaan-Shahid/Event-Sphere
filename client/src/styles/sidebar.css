@@ -1,0 +1,130 @@
+/* ===============================
+   EventSphere Sidebar
+   =============================== */
+
+.app-sidebar {
+  width: 260px;
+  background: #020617; /* deep navy */
+  color: #e5e7eb;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 100vh;
+}
+
+/* ---------- Header: Logo + role ---------- */
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0 0.4rem;
+}
+
+.sidebar-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-role {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* ---------- Navigation links ---------- */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.9rem;
+  font-size: 0.92rem;
+  color: #e5e7eb;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.sidebar-link-icon {
+  width: 22px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  opacity: 0.9;
+}
+
+.sidebar-link-label {
+  flex: 1;
+}
+
+.sidebar-link:hover {
+  background: #111827;
+  transform: translateX(2px);
+}
+
+/* Active link (blue pill style) */
+.sidebar-link--active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* ---------- Sidebar Footer ---------- */
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1.25rem 0.4rem 0.5rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.sidebar-user-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.sidebar-user-email {
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+.sidebar-logout-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+
+.sidebar-logout-row:hover {
+  color: #facc15;
+}
+
+.sidebar-logout-icon {
+  font-size: 1rem;
+}
+
+.sidebar-section-label {
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  padding: 0 0.4rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}

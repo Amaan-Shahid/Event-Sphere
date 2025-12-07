@@ -1,0 +1,126 @@
+/* global.css */
+
+/* Base reset / typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* App shell layout (used on all dashboards) */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: 230px;
+  background: #020617;
+  border-right: 1px solid #1f2937;
+  padding: 1rem;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-topbar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: 1px solid #1f2937;
+  background: #020617;
+}
+
+.app-content {
+  padding: 1rem;
+}
+
+/* Shared components */
+.nav-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.nav-link.active {
+  background-color: #1d4ed8;
+  color: #f9fafb;
+}
+
+.button-primary {
+  background-color: #2563eb;
+  border: none;
+  color: #f9fafb;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.button-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.button-ghost {
+  background: transparent;
+  border: 1px solid #4b5563;
+  color: #e5e7eb;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #4b5563;
+  background: #FFFFFF;
+  color: BLACK;
+  font-size: 0.95rem;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.card {
+  border-radius: 0.75rem;
+  border: 1px solid #1f2937;
+  padding: 1rem;
+  background: #020617;
+}
+
+.page-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}

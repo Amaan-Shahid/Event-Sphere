@@ -30,15 +30,16 @@ CREATE TABLE users (
 -- ============================================================
 
 CREATE TABLE societies (
-    society_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL UNIQUE,
-    description TEXT,
-    created_by INT NULL, -- super admin
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_societies_created_by
-        FOREIGN KEY (created_by) REFERENCES users(user_id)
-        ON DELETE SET NULL
+  society_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  created_by INT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  is_active TINYINT(1) NOT NULL DEFAULT 1,
+  CONSTRAINT fk_societies_created_by FOREIGN KEY (created_by) REFERENCES users(user_id)
+    ON DELETE SET NULL
 );
+
 
 -- ============================================================
 -- 3. SOCIETY ROLES

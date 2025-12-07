@@ -1,0 +1,760 @@
+/* ==== Super Admin Dashboard Styles (admin.css) ==== */
+
+.admin-dashboard-page {
+  /* Make the main area light, separate from dark sidebar */
+  background-color: #f3f4f6;
+  min-height: calc(100vh - 56px); /* 56px = topbar height from global.css */
+  margin: -1rem;                  /* cancel app-content padding */
+  padding: 1.5rem 2rem 2rem;
+  color: #111827;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Header row: title + search + profile */
+.admin-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.admin-page-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.admin-page-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.admin-page-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-search-input {
+  width: 260px;
+  max-width: 100%;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.admin-search-input::placeholder {
+  color: #9ca3af;
+}
+
+.admin-icon-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.admin-profile-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.admin-profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-profile-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.admin-profile-role {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.admin-profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+/* Top metric cards */
+.admin-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-metric-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+}
+
+.admin-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.admin-metric-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #2563eb;
+}
+
+.admin-metric-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.admin-metric-sub {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.admin-metric-trend {
+  font-size: 0.8rem;
+  color: #16a34a;
+}
+
+/* Lower grid: 3 big cards */
+.admin-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 1rem;
+}
+
+/* Reusable white card */
+.admin-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.2rem 1.3rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+}
+
+.admin-card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.admin-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.admin-card-link {
+  font-size: 0.8rem;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* Quick actions */
+.admin-quick-actions-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* whole row/button */
+.admin-quick-action-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border-radius: 0.9rem;
+  padding: 0.7rem 0.9rem;
+
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  text-align: left;
+
+  transition:
+    transform 0.12s ease-out,
+    box-shadow 0.12s ease-out,
+    background-color 0.12s ease-out,
+    border-color 0.12s ease-out;
+}
+
+.admin-quick-action-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(15, 23, 42, 0.08);
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+/* left side (icon + text) */
+.admin-quick-action-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* circular icon */
+.admin-quick-action-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #e0ecff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #1d4ed8;
+  flex-shrink: 0;
+}
+
+/* text block */
+.admin-quick-action-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.admin-quick-action-subtitle {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* arrow on right */
+.admin-quick-action-arrow {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  transition: transform 0.12s ease-out, color 0.12s ease-out;
+}
+
+.admin-quick-action-item:hover .admin-quick-action-arrow {
+  transform: translateX(2px);
+  color: #1d4ed8;
+}
+
+/* System health */
+.admin-health-list {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+}
+
+/* mini card per service */
+.admin-health-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.7rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.admin-health-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* colored status dot */
+.admin-health-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #22c55e; /* green OK */
+}
+
+.admin-health-name {
+  color: #374151;
+  font-weight: 500;
+}
+
+/* percentage pill on the right */
+.admin-health-value {
+  min-width: 3.2rem;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Recent activity */
+.admin-activity-list {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+}
+
+.admin-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.admin-activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-top: 0.25rem;
+}
+
+.admin-activity-dot--green {
+  background: #22c55e;
+}
+.admin-activity-dot--blue {
+  background: #2563eb;
+}
+.admin-activity-dot--red {
+  background: #ef4444;
+}
+
+.admin-activity-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.admin-activity-title {
+  color: #111827;
+}
+
+.admin-activity-meta {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .admin-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-main-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .admin-page-header-right {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .admin-search-input {
+    flex: 1;
+  }
+}
+
+/* ===== Admin tables / lists ===== */
+
+.admin-table-wrapper {
+  margin-top: 0.75rem;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.admin-table thead {
+  background: #f9fafb;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.admin-table th {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.admin-table tbody tr:hover {
+  background: #f3f4f6;
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.admin-badge--green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.admin-badge--red {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.admin-badge--blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.admin-inline-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.admin-small-button {
+  border: none;
+  border-radius: 0.45rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.admin-small-button--outline {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.admin-small-button--danger {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.admin-form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.admin-form-inline input,
+.admin-form-inline select {
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.85rem;
+}
+
+.admin-form-inline button {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+/* === Card-style list panels (for Society Admins & Societies) === */
+
+.admin-list-panel {
+  background: #ffffff;
+  border-radius: 1.2rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+}
+
+.admin-list-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.admin-list-header-left-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.admin-list-header-left-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.admin-list-count {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.admin-list-add-button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  background: #2563eb;
+  color: #f9fafb;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.admin-list-add-button span:first-child {
+  font-size: 1.1rem;
+}
+
+/* Row container */
+.admin-list-table {
+  margin-top: 0.75rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.admin-list-row-header,
+.admin-list-row {
+  display: grid;
+  grid-template-columns: 2.1fr 1.6fr 0.8fr 1.1fr 0.7fr; /* Admin, Society, Status, Assigned, Actions */
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+}
+
+.admin-list-row-header {
+  background: #f9fafb;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.admin-list-row {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  align-items: center;
+}
+
+.admin-list-row:hover {
+  background: #f3f4f6;
+}
+
+/* Left cell content styles */
+.admin-list-person {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.admin-list-person-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.admin-list-person-email {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.admin-list-society {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.admin-list-society-icon {
+  font-size: 0.9rem;
+}
+
+/* Status pills */
+.admin-status-pill {
+  display: inline-flex;
+  padding: 0.1rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-status-pill--active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.admin-status-pill--inactive {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Actions icons */
+.admin-list-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.admin-icon-edit,
+.admin-icon-delete {
+  cursor: pointer;
+}
+
+.admin-icon-edit {
+  color: #4b5563;
+}
+
+.admin-icon-delete {
+  color: #dc2626;
+}
+
+/* Societies page specific */
+
+.admin-tab-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-tab {
+  padding: 0.35rem 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  cursor: pointer;
+  position: relative;
+}
+
+.admin-tab--active {
+  color: #111827;
+  font-weight: 500;
+}
+
+.admin-tab--active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 2px;
+  background: #2563eb;
+  border-radius: 999px;
+}
+
+.admin-society-stats-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-society-stat-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 0.9rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem 1rem;
+}
+
+.admin-society-stat-label {
+  font-size: 0.84rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.admin-society-stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Societies list row columns */
+.admin-societies-header,
+.admin-societies-row {
+  display: grid;
+  grid-template-columns: 2.1fr 1.7fr 1.2fr 0.9fr 0.9fr; /* Society, Admin, Stats, Status, Actions */
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+}
+
+.admin-societies-header {
+  background: #f9fafb;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.admin-societies-row {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  align-items: center;
+}
+
+.admin-societies-row:hover {
+  background: #f3f4f6;
+}
+
+.admin-society-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.admin-society-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.admin-society-meta {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.admin-society-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.8rem;
+  color: #4b5563;
+}

@@ -34,7 +34,6 @@ app.use(
 testConnection();
 
 // Routes
-app.use('/api/admin', superAdminRoutes); 
 app.use('/api', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
@@ -44,6 +43,7 @@ app.use('/api', volunteerRoutes);
 app.use('/api', teamRoutes);
 app.use('/api', attendanceRoutes);
 app.use('/api', certificateRoutes);
+app.use('/api/admin', superAdminRoutes); 
 
 // 404 fallback
 app.use((req, res, next) => {
