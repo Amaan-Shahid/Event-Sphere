@@ -14,6 +14,7 @@ const volunteerRoutes = require('./routes/volunteerRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
 const certificateRoutes = require('./routes/certificateRoutes');
+const superAdminRoutes = require('./routes/superAdminRoutes');
 
 
 dotenv.config();
@@ -33,6 +34,7 @@ app.use(
 testConnection();
 
 // Routes
+app.use('/api/admin', superAdminRoutes); 
 app.use('/api', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);

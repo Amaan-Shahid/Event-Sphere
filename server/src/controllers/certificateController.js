@@ -16,6 +16,13 @@ const { getEventById } = require('../models/eventModel');
 const { isUserCoreMemberOfSociety } = require('../models/userModel');
 const { pool } = require('../config/db');
 const { generateVerificationToken } = require('../utils/tokenUtils');
+const dotenv = require('dotenv');
+dotenv.config();
+const {
+  generateParticipantCertificatesForEvent,
+} = require('../services/certificateService');
+
+const APP_BASE_URL = process.env.APP_BASE_URL || 'http://localhost:5000';
 
 /**
  * Helper: can manage society certificates?
@@ -174,7 +181,7 @@ async function issueCertificatesForEventHandler(req, res, next) {
   try {
     const user = req.user;
     const eventId = Number(req.params.eventId);
-    const { template_id, mode } = req.body;
+    const { template_id } = req.body;
 
     if (!eventId || !template_id) {
       return res.status(400).json({
@@ -199,74 +206,19 @@ async function issueCertificatesForEventHandler(req, res, next) {
       });
     }
 
-    const template = await getCertificateTemplateById(template_id);
-    if (!template || template.society_id !== event.society_id) {
-      return res.status(400).json({
-        success: false,
-        message: 'Template does not belong to this event’s society or does not exist',
-      });
-    }
-
-    const usePresentOnly = mode !== 'all_registered'; // default: present_only
-
-    // Find eligible registrations using a direct query
-    let sql = `
-      SELECT r.registration_id, r.user_id
-      FROM registrations r
-      LEFT JOIN attendance a
-        ON a.event_id = r.event_id
-       AND a.user_id = r.user_id
-      WHERE r.event_id = ?
-        AND r.status = 'registered'
-    `;
-
-    const params = [eventId];
-
-    if (usePresentOnly) {
-      sql += ` AND a.attendance_status = 'present'`;
-    }
-
-    const [registrations] = await pool.query(sql, params);
-
-    if (registrations.length === 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'No eligible registrations found for certificates',
-      });
-    }
-
-    const createdCertificates = [];
-
-    for (const reg of registrations) {
-      // Check if certificate already exists for this registration
-      const existing = await getCertificatesByRegistration(reg.registration_id);
-      if (existing && existing.length > 0) {
-        continue; // skip to avoid duplicates
-      }
-
-      // Generate token and placeholder file path
-      const token = generateVerificationToken();
-      const filePath = path.posix.join(
-        '/uploads/certificates',
-        `event_${eventId}_reg_${reg.registration_id}.pdf`
-      );
-
-      const cert = await createCertificate({
-        registration_id: reg.registration_id,
-        template_id,
-        verification_token: token,
-        status: 'ready', // we assume it's generated; later you can integrate a real generator
-        file_path: filePath,
-        issued_by: user.user_id,
-      });
-
-      createdCertificates.push(cert);
-    }
+    // Use the new Puppeteer-based engine
+    const { created, skipped } = await generateParticipantCertificatesForEvent(
+      eventId,
+      template_id,
+      user.user_id,
+      APP_BASE_URL
+    );
 
     res.json({
       success: true,
-      message: `Certificates issued for ${createdCertificates.length} registration(s)`,
-      data: createdCertificates,
+      message: `Certificates generated for ${created.length} registration(s); skipped ${skipped.length}.`,
+      created,
+      skipped,
     });
   } catch (err) {
     next(err);
